@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Guessing Game</title>
+</head>
+<body>
+    <h1>Number Guessing Game</h1>
+    <div id="game">
+        <label for="guessInput">Enter your guess (1-100): </label>
+        <input type="text" id="guessInput">
+        <button onclick="checkGuess()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script type="text/javascript">
+        // Define a secret number between 1 and 100
+        const secretNumber = 55
+
+        // Function to check the user's guess
+        function checkGuess() {
+            // Get the user's guess from the input field
+            let guess = parseInt(document.getElementById("guessInput").value);
+
+            // Check if the guess is valid and within the range
+            if (isNaN(guess) || guess < 1 || guess > 100) {
+                document.getElementById("result").textContent = "Please enter a valid number between 1 and 100.";
+            } else {
+                // Check if the guess is correct
+                if (guess === secretNumber) {
+                    document.getElementById("result").textContent = "Congratulations! You guessed the number correctly!";
+                } else {
+                    // Inform the user if the guess is too low or too high
+                    if (guess < secretNumber) {
+                        document.getElementById("result").textContent = "Too low, try again!";
+                    } else {
+                        document.getElementById("result").textContent = "Too high, try again!";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+
